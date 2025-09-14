@@ -40,20 +40,23 @@ class BepayCard extends StatelessWidget {
           Positioned(
           right: 0,
           left: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset("assets/bepay_logo.svg",height: 44,),
-                const SizedBox(width: 8),
-                const Text(
-                  'bepay',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset("assets/bepay_logo.svg",height: 44,),
+                  const SizedBox(width: 8),
+                  const Text(
+                    'bepay',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const Positioned(
