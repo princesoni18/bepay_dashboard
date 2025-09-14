@@ -7,8 +7,9 @@ class BepayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: 370,
       height: 180,
+      
     
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -18,8 +19,17 @@ class BepayCard extends StatelessWidget {
       ),
 
       child: Stack(
+        clipBehavior: Clip.hardEdge,
         alignment: Alignment.center,
         children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: SvgPicture.asset("assets/card_bg.svg",fit: BoxFit.cover,))),
           Positioned(
             left: 20,
             top: 20,

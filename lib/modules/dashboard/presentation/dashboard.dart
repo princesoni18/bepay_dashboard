@@ -11,8 +11,8 @@ class BepayDashboard extends StatelessWidget {
       backgroundColor: const Color(0xFFF8F9FA),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // Determine if it's mobile or desktop layout
-          bool isMobile = constraints.maxWidth < 768;
+       
+          bool isMobile = constraints.maxWidth < 790;
           
           if (isMobile) {
             return const MobileLayout();

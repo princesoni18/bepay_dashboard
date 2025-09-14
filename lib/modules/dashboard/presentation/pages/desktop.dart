@@ -1,6 +1,8 @@
 import 'package:demo_project/modules/dashboard/presentation/widgets/action_button_row.dart';
 import 'package:demo_project/modules/dashboard/presentation/widgets/beapay_card.dart';
+import 'package:demo_project/modules/dashboard/presentation/widgets/loyalty_program.dart';
 import 'package:demo_project/modules/dashboard/presentation/widgets/metrics_card.dart';
+import 'package:demo_project/modules/dashboard/presentation/widgets/monthly_turnover.dart';
 import 'package:demo_project/modules/dashboard/presentation/widgets/side_bar.dart';
 import 'package:demo_project/modules/dashboard/presentation/widgets/wallet_balance.dart';
 import 'package:flutter/material.dart';
@@ -10,63 +12,69 @@ class DesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  DashboardSidebar(
+    return  CurvedDashboardSidebar(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.only(top: 12,left: 24,right: 24),
         child: SingleChildScrollView(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Left Column - Main Content
               const Expanded(
-                flex: 2,
+                flex: 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Bepay Card and Account Info
-                    Row(
-                      children: [
-                         Expanded(child: BepayCard()),
-                        const SizedBox(width: 20),
-                        
-                              const MetricCard(
-                                title: 'Payouts',
-                                subtitle: 'Current Payouts',
-                                value: '\$3,877.10',
-                                icon: "payout",
-                              ),
-                              const SizedBox(width: 24),
-                              const MetricCard(
-                                title: 'Turnover',
-                                subtitle: 'Current Payouts',
-                                value: '\$3,877.10',
-                                icon: "turnover",
-                              ),
-                            ],
-                          ),
+                    FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        children: [
+                         BepayCard(),
+                          const SizedBox(width: 20),
+                          
+                                const MetricCard(
+                                  title: 'Payouts',
+                                  subtitle: 'Current Payouts',
+                                  value: '\$3,877.10',
+                                  icon: "payout",
+                                ),
+                                const SizedBox(width: 24),
+                                const MetricCard(
+                                  title: 'Turnover',
+                                  subtitle: 'Current Payouts',
+                                  value: '\$3,877.10',
+                                  icon: "turnover",
+                                ),
+                              ],
+                            ),
+                    ),
                         
                       
                     
-                    const SizedBox(height: 24),
-                    
+                     SizedBox(height: 24),
+
                     // Account Info
-                    const Text(
+                     Text(
                       'My Account Info',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                     SizedBox(height: 16),
                     
-                    const WalletBalanceCard(),
-                    const SizedBox(height: 20),
+                     WalletBalanceCard(),
+                     SizedBox(height: 20),
                     
-                    const ActionButtonsRow(),
-                    const SizedBox(height: 24),
+                     ActionButtonsRow(),
+                     SizedBox(height: 24),
                     
                     // Loyalty Program Cards
-                    const LoyaltyProgramRow(),
+                     LoyaltyProgramRow(),
+
+                     SizedBox(height: 100,)
                   ],
                 ),
               ),
@@ -75,8 +83,9 @@ class DesktopLayout extends StatelessWidget {
               
               // Right Column - Analytics
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
+                
                   padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 40),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
@@ -87,7 +96,10 @@ class DesktopLayout extends StatelessWidget {
                     children: [
                       const MonthlyTurnoverCard(),
                       const SizedBox(height: 20),
-                      const ProgressCard(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 42.0),
+                        child: const ProgressCard(),
+                      ),
                     ],
                   ),
                 ),
